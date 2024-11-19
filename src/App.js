@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import LandingPage from './components/LandingPage';
+import LoginPage from './components/LoginPage';
+import AdminDashboard from './components/AdminDashboard';
+import UserRequestForm from './components/UserRequestForm';
+import CompanyPortal from './components/CompanyPortal';
+import BackgroundImagePage from './components/BackgroundImagePage';
+import Credentials from './components/Credentials';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="container">
+                <Routes>
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/login" element={<LoginPage role="user" />} />
+                    <Route path="/login/admin" element={<LoginPage role="admin" />} />
+                    <Route path="/admin" element={<AdminDashboard />} />
+                    <Route path="/user-request" element={<UserRequestForm />} />
+                    <Route path="/company-portal" element={<CompanyPortal />} />
+                    <Route path="/background-image" element={<BackgroundImagePage />} />
+                    <Route path="/credentials" element={<Credentials />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
